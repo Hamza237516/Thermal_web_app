@@ -1,0 +1,8 @@
+# Environments
+venv/
+__pycache__/
+.DS_Store
+
+# Model Weights (Too large for GitHub)
+*.pth
+*.pt

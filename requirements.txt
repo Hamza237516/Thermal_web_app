@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+streamlit
+torch
+torchvision
+transformers
+timm
+pillow
+python-multipart
+requests
