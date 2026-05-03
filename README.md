@@ -7,31 +7,31 @@
 [![PyTorch](https://img.shields.io/badge/AI-PyTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 
 ## 📌 Project Overview
-This repository, **Thermal_web_app**, serves as the **Deployment & Dashboard** layer for an advanced object detection system tailored for long-wave infrared (LWIR) environments . It houses the core application logic (`api.py` and `app.py`) necessary to visualize and interact with the DETR model .
+This repository, **Thermal_web_app**, serves as the **Deployment & Dashboard** layer for an advanced object detection system tailored for long-wave infrared (LWIR) environments. It houses the core application logic (`api.py` and `app.py`) necessary to visualize and interact with the DETR model.
 
-The system utilizes a **DEtection TRansformer (DETR)** architecture fine-tuned on the **Teledyne FLIR ADAS Dataset** to localize vehicles and pedestrians in challenging conditions like total darkness or smoke .
+The system utilizes a **DEtection TRansformer (DETR)** architecture fine-tuned on the **Teledyne FLIR ADAS Dataset** to localize vehicles and pedestrians in challenging conditions like total darkness or smoke.
 
-> **Note:** This repository is specifically for deployment. The core training logic and model weight generation are maintained in the [Training Repository](https://github.com/Hamza237516/Thermal-Tracking-DETR) .
+> **Note:** This repository is specifically for deployment. The core training logic and model weight generation are maintained in the [Training Repository](https://github.com/Hamza237516/Thermal-Tracking-DETR).
 
 ## 🏗️ Decoupled Architecture
-To ensure high scalability, the system is split into two primary components :
-*   **Neural Backend (`api.py`):** A **FastAPI** server that hosts the **DETR-ResNet50** model and handles image preprocessing [cite: 1, 2].
-*   **Telemetry Dashboard (`app.py`):** A **Streamlit** user interface for real-time visualization, confidence filtering, and performance metrics [cite: 1, 2].
+To ensure high scalability, the system is split into two primary components:
+*   **Neural Backend (`api.py`):** A **FastAPI** server that hosts the **DETR-ResNet50** model and handles image preprocessing.
+*   **Telemetry Dashboard (`app.py`):** A **Streamlit** user interface for real-time visualization, confidence filtering, and performance metrics.
 
 ## 🚀 Key Features
-*   **Thermal Signal Logic:** Optimized for 1-channel thermal heat maps [cite: 1, 2].
-*   **Dynamic Thresholding:** Adjust detection sensitivity via the UI sidebar [cite: 1, 2].
-*   **Performance Telemetry:** Real-time monitoring of inference latency and object identification [cite: 1, 2].
+*   **Thermal Signal Logic:** Optimized for 1-channel thermal heat maps.
+*   **Dynamic Thresholding:** Adjust detection sensitivity via the UI sidebar.
+*   **Performance Telemetry:** Real-time monitoring of inference latency and object identification.
 
 ## 📊 Performance Benchmarks
-*   **Inference Latency:** ~0.45s (Benchmarked on local MacBook hardware) [cite: 1, 2].
-*   **Concurrency:** Robust localization for **35+ concurrent objects** per frame [cite: 1, 2].
-*   **Model Training:** Fine-tuned for **15 Epochs** for specialized thermal reasoning [cite: 1, 2].
+*   **Inference Latency:** ~0.45s (Benchmarked on local MacBook hardware).
+*   **Concurrency:** Robust localization for **35+ concurrent objects** per frame.
+*   **Model Training:** Fine-tuned for **15 Epochs** for specialized thermal reasoning.
 
 ## 🛠️ Tech Stack
-*   **Core AI:** PyTorch, HuggingFace Transformers, Timm [cite: 1, 2].
-*   **Deployment:** FastAPI, Uvicorn, Python 3.13 [cite: 1, 2].
-*   **Frontend:** Streamlit, PIL (Pillow), Requests [cite: 1, 2].
+*   **Core AI:** PyTorch, HuggingFace Transformers, Timm.
+*   **Deployment:** FastAPI, Uvicorn, Python 3.13.
+*   **Frontend:** Streamlit, PIL (Pillow), Requests.
 
 ## ⚙️ Setup & Installation
 1.  **Clone the Repository:**
@@ -51,4 +51,4 @@ To ensure high scalability, the system is split into two primary components :
 
 ---
 **Developed by [Hamza Mehmood](https://github.com/Hamza237516)**
-*NIT Alumnus
+*NIT Alumnus | Aspiring Graduate Student in AI*
