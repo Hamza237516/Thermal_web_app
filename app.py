@@ -1,7 +1,8 @@
 import streamlit as st
 import requests
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 import time
+import config  # Using our central configuration
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -19,19 +20,38 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+# --- Backend Health Check ---
+def check_backend_health():
+    """Pings the /health endpoint we added to api.py"""
+    try:
+        url = f"http://{config.HOST}:{config.PORT}/health"
+        response = requests.get(url, timeout=1)
+        return response.status_code == 200
+    except:
+        return False
+
 # --- Sidebar Configuration ---
 with st.sidebar:
     st.title("⚙️ Parameters")
     st.markdown("Adjust the AI's sensitivity in real-time.")
     
-    # Confidence Slider
-    conf_threshold = st.slider("Confidence Threshold", 0.0, 1.0, 0.5, 0.05)
+    # Using the default confidence from our config
+    conf_threshold = st.slider("Confidence Threshold", 0.0, 1.0, config.DEFAULT_CONFIDENCE, 0.05)
     
     st.divider()
     st.subheader("📊 System Status")
-    st.success("Backend: Online")
-    st.info("Model: DETR-ResNet50")
-    st.caption("Fine-tuned on FLIR Thermal Dataset (15 Epochs)")
+    
+    # DYNAMIC STATUS CHECK
+    is_online = check_backend_health()
+    
+    if is_online:
+        st.success("Backend: Online")
+        st.info(f"Model: {config.MODEL_PATH}")
+        st.caption("Fine-tuned on FLIR Thermal Dataset (15 Epochs)")
+    else:
+        st.error("Backend: Offline")
+        st.warning("⚠️ Action Required: Start the FastAPI server in your terminal.")
+        st.stop() # Prevents the UI from loading further if the backend is down
 
 # --- Header Section ---
 st.title("🔥 Thermal-Tracking-DETR Dashboard")
@@ -55,12 +75,12 @@ with col_out:
         if st.button("Analyze Thermal Signature", type="primary"):
             with st.spinner("Crunching tensors..."):
                 try:
-                    # Tracking inference speed
                     start = time.time()
                     
-                    # API Call
+                    # API Call using config host/port
                     payload = {"file": uploaded_file.getvalue()}
-                    response = requests.post("http://127.0.0.1:8000/predict", files=payload)
+                    predict_url = f"http://{config.HOST}:{config.PORT}/predict"
+                    response = requests.post(predict_url, files=payload)
                     data = response.json()["detections"]
                     
                     elapsed = round(time.time() - start, 3)
@@ -86,7 +106,7 @@ with col_out:
                     m2.metric("Inference Latency", f"{elapsed}s")
                     
                 except Exception as e:
-                    st.error(f"Connection Lost: Ensure FastAPI is running on port 8000. Error: {e}")
+                    st.error(f"Prediction Failed: The model could not process the image. Error: {e}")
     else:
         st.info("Awaiting input file for telemetry analysis.")
 
