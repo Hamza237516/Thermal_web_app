@@ -27,6 +27,17 @@ The system utilizes a **DEtection TRansformer (DETR)** architecture fine-tuned o
 ├── 📦 requirements.txt      (Training dependencies like PyTorch)
 ├── 🙈 .gitignore            (Hides heavy datasets from GitHub)
 └── 📖 README.md             (Project documentation)
+
+
+📁 Thermal_web_app/
+│
+├── 🔌 api.py                (FastAPI backend inference engine)
+├── 🖥️ app.py                (Streamlit interactive dashboard)
+├── 🛠️ config.py             (Centralized system settings)
+│
+├── 📦 requirements.txt      (Deployment dependencies like FastAPI)
+├── 🙈 .gitignore            (Hides venv and local .pth weights)
+└── 📖 README.md             (Deployment documentation)
 ```
 
 ## 🏗️ Decoupled Architecture
