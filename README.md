@@ -14,33 +14,20 @@ The system utilizes a **DEtection TRansformer (DETR)** architecture fine-tuned o
 
 > **Note:** This repository is specifically for deployment. The core training logic and model weight generation are maintained in the [Training Repository](https://github.com/Hamza237516/Thermal-Tracking-DETR).
 
-### 🧠 **The Training Repository**
+### 🧠 The Training Repository
 *(Where the AI learns on the FLIR dataset)*
 
-📁 **`Thermal-Tracking-DETR/`**
+```text
+📁 Thermal-Tracking-DETR/
 │
-├── 🐍 **`dataset.py`** *(Logic for loading/formatting thermal images)*
-├── ⚙️ **`train.py`** *(PyTorch training loop & hyperparameters)*
-├── 🧪 **`test_dataset.py`** *(Validation scripts for the dataset)*
+├── 🐍 dataset.py            (Logic for loading/formatting thermal images)
+├── ⚙️ train.py              (PyTorch training loop & hyperparameters)
+├── 🧪 test_dataset.py       (Validation scripts for the dataset)
 │
-├── 📦 **`requirements.txt`** *(Training dependencies like PyTorch)*
-├── 🙈 **`.gitignore`** *(Hides heavy datasets from GitHub)*
-└── 📖 **`README.md`** *(Project documentation)*
-
----
-
-### 🌐 **The Deployment Repository**
-*(Where the AI is served to the web dashboard)*
-
-📁 **`Thermal_web_app/`**
-│
-├── 🔌 **`api.py`** *(FastAPI backend inference engine)*
-├── 🖥️ **`app.py`** *(Streamlit interactive dashboard)*
-├── 🛠️ **`config.py`** *(Centralized system settings)*
-│
-├── 📦 **`requirements.txt`** *(Deployment dependencies like FastAPI)*
-├── 🙈 **`.gitignore`** *(Hides venv and local `.pth` weights)*
-└── 📖 **`README.md`** *(Deployment documentation)*
+├── 📦 requirements.txt      (Training dependencies like PyTorch)
+├── 🙈 .gitignore            (Hides heavy datasets from GitHub)
+└── 📖 README.md             (Project documentation)
+```
 
 ## 🏗️ Decoupled Architecture
 To ensure high scalability, the system is split into two primary components:
