@@ -1,5 +1,5 @@
-🔥 Thermal_web_app
-### *Real-Time Autonomous Object Detection for Infrared Systems*
+# 🔥 Thermal_web_app
+### *Thermal (infrared) object detection with a fine-tuned DETR model*
 
 [![Python 3.13](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -51,9 +51,9 @@ To ensure high scalability, the system is split into two primary components:
 *   **Performance Telemetry:** Real-time monitoring of inference latency and object identification.
 
 ## 📊 Performance Benchmarks
-*   **Inference Latency:** ~0.45s (Benchmarked on local MacBook hardware).
-*   **Concurrency:** Robust localization for **35+ concurrent objects** per frame.
-*   **Model Training:** Fine-tuned for **15 Epochs** for specialized thermal reasoning.
+*   **Inference Latency:** ~0.45 s per image on a MacBook CPU, measured end to end in the dashboard.
+*   **Dense Scenes:** Localizes **35+ objects** in a single frame.
+*   **Model Training:** Fine-tuned for **15 epochs** on FLIR ADAS v2 (see the [Training Repository](https://github.com/Hamza237516/Thermal-Tracking-DETR)).
 
 ## 🛠️ Tech Stack
 *   **Core AI:** PyTorch, HuggingFace Transformers, Timm.
@@ -63,7 +63,7 @@ To ensure high scalability, the system is split into two primary components:
 ## ⚙️ Setup & Installation
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/Hamza237516/Thermal_web_app.git](https://github.com/Hamza237516/Thermal_web_app.git)
+    git clone https://github.com/Hamza237516/Thermal_web_app.git
     cd Thermal_web_app
     ```
 2.  **Initialize Virtual Environment:**
@@ -72,10 +72,11 @@ To ensure high scalability, the system is split into two primary components:
     source venv/bin/activate
     pip install -r requirements.txt
     ```
-3.  **Local Execution:**
+3.  **Add the Model Weights:** Train the model with the [Training Repository](https://github.com/Hamza237516/Thermal-Tracking-DETR) and copy `thermal_detr_epoch_15.pth` into this folder. The file is git-ignored because of its size.
+4.  **Local Execution:**
     *   **Start Backend:** `uvicorn api:app --reload`
     *   **Start Frontend:** `streamlit run app.py`
 
 ---
 **Developed by [Hamza Mehmood](https://github.com/Hamza237516)**
-*NIT Alumnus | Aspiring Graduate Student in AI*
+*B.Tech student at NIT Srinagar | Aspiring graduate student in AI*
